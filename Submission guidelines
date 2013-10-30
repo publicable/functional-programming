@@ -1,0 +1,15 @@
+Submission guidelines
+
+See the course home page for lab deadlines.
+Write your answers in one file, called Lab1.hs. For each part, use Haskell comments to indicate what part of the file contains the answer to that part. For answers in natural language, use English; write your answers also in Haskell comments. Remove irrelevant things from the file.
+Before you submit your code, Clean It Up! After you feel you are done, spend some time on cleaning your code; make it simpler, remove unnecessary things, etc. We will reject your solution if it is not clean. Clean code:
+Does not have long lines (< 78 characters)
+Has a consistent layout
+Has type signatures for all top-level functions
+Has good comments
+Has no junk (junk is unused code, commented code, unneccessary comments)
+Has no overly complicated function definitions
+Does not contain any repetitive code (copy-and-paste programming)
+Feel free to use the hlint program to help with many of these issues and other haskell style issues. For future labs we will expect you to run your code through hlint before submitting. When you are done, please submit it using the Fire system.
+(If you get a warning that the security certificate of the Fire server is out of date you will have to accept it anyway. Hopefully this will be fixed soon.)
+Good luck!
