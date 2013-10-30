@@ -1,7 +1,7 @@
 Submission guidelines
 
 See the course home page for lab deadlines.
-Write your answers in one file, called Lab1.hs. For each part, use Haskell comments to indicate what part of the file contains the answer to that part. For answers in natural language, use English; write your answers also in Haskell comments. Remove irrelevant things from the file.
+Write your answers in one file, called LabN.hs. For each part, use Haskell comments to indicate what part of the file contains the answer to that part. For answers in natural language, use English; write your answers also in Haskell comments. Remove irrelevant things from the file.
 Before you submit your code, Clean It Up! After you feel you are done, spend some time on cleaning your code; make it simpler, remove unnecessary things, etc. We will reject your solution if it is not clean. Clean code:
 Does not have long lines (< 78 characters)
 Has a consistent layout
