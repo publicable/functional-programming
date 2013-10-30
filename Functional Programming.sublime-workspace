@@ -1,0 +1,1347 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"margin-",
+				"margin-bottom"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"li",
+				"link	Tag"
+			],
+			[
+				"backgro",
+				"background-color"
+			],
+			[
+				"servo",
+				"servoMotorTimes"
+			],
+			[
+				"conti",
+				"continuousPin"
+			],
+			[
+				"cont",
+				"container"
+			],
+			[
+				"con",
+				"container"
+			],
+			[
+				"de",
+				"delay"
+			],
+			[
+				"SE",
+				"SENSOR_PIN"
+			],
+			[
+				"prin",
+				"println"
+			],
+			[
+				"serial",
+				"Serial"
+			],
+			[
+				"dista",
+				"distanceThreshold"
+			],
+			[
+				"seco",
+				"second_notification_datetime"
+			],
+			[
+				"tran",
+				"translations_repo_url"
+			],
+			[
+				"clear",
+				"clear_translations"
+			],
+			[
+				"file",
+				"file_path"
+			],
+			[
+				"cs",
+				"csv_data"
+			],
+			[
+				"allo",
+				"allowed_translations"
+			],
+			[
+				"opti",
+				"options"
+			],
+			[
+				"attribu",
+				"attribute_id"
+			],
+			[
+				"option",
+				"option_id"
+			],
+			[
+				"va",
+				"var_dump"
+			],
+			[
+				"dis",
+				"displayLevels"
+			],
+			[
+				"post",
+				"post_data"
+			],
+			[
+				"addi",
+				"additional_data"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"op",
+				"options"
+			],
+			[
+				"makes",
+				"makes_list"
+			],
+			[
+				"backgr",
+				"background-image"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"disp",
+				"display_value"
+			],
+			[
+				"wind",
+				"windowHeight"
+			],
+			[
+				"Virtual",
+				"VirtualHost"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "lab1.hs",
+			"settings":
+			{
+				"buffer_size": 366,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 207.0,
+		"selected_items":
+		[
+			[
+				"markdow",
+				"Set Syntax: Markdown"
+			],
+			[
+				"haskell lin",
+				"SublimeHaskell: Lint"
+			],
+			[
+				"haskell",
+				"SublimeHaskell: Check & Lint"
+			],
+			[
+				"haskell run",
+				"SublimeHaskell: Run"
+			],
+			[
+				"haskell s",
+				"SublimeHaskell: Stylish"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"arduino",
+				"Set Syntax: Arduino"
+			],
+			[
+				"packag",
+				"Package Control: Install Package"
+			],
+			[
+				"c++",
+				"Set Syntax: C++"
+			],
+			[
+				"linter",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"packa remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"align",
+				"Preferences: Alignment Key Bindings – Default"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"dash",
+				"DashDoc: invoke Dash with selected word"
+			],
+			[
+				"upgra",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"upg",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"packaga",
+				"Package Control: Install Package"
+			],
+			[
+				"package  up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"preview",
+				"GitHub Flavored Markdown: Preview"
+			],
+			[
+				"markd",
+				"Set Syntax: Markdown"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"mark",
+				"Set Syntax: Markdown"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"packa rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"alignment",
+				"Preferences: Alignment Key Bindings – Default"
+			],
+			[
+				"python",
+				"Set Syntax: Python"
+			],
+			[
+				"packa in",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"bash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"syntax",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"syntax bas",
+				"Set Syntax: Shell Script (Bash)"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 137.0,
+		"history":
+		[
+			"def print_multiplication_table(n):",
+			"import Default.comment",
+			"sublime.packages_path()",
+			"os.path.dirname(__file__)",
+			"from Packages import Default",
+			"os.getcwd()",
+			"import Default",
+			"import default",
+			"inspect.getfile(Default)",
+			"inspect.getfile(os)",
+			"import inspect",
+			"import os",
+			"import Default.comment",
+			"from . import Default",
+			"import Default",
+			"import Default.comment",
+			"from . import Default",
+			"import Default.indentation",
+			"import Default",
+			"import Default.indentation as indentation",
+			"from sublime import 'Default'",
+			"from sublime import Default",
+			"from . import Default.indentation",
+			"from . import Default",
+			"import Default",
+			"sys.modules",
+			"import sys",
+			"sys.modules",
+			"clrscr()",
+			"clr()",
+			"clear",
+			"clear()",
+			"os.path.join(sublime.packages_path(), 'Default')",
+			"sys.path.append(os.path.join(sublime.packages_path(), 'Default'))",
+			"import Default",
+			"import sublime_plugin",
+			"import Default",
+			"sys.modules",
+			"modules",
+			"__import__('Default')",
+			"sys.path.append(os.path.join(sublime.packages_path(), 'Default'))",
+			"import sys",
+			"sys.path.append(os.path.join(sublime.packages_path(), 'Default'))",
+			"os.path.join(sublime.packages_path(), 'Default')",
+			"import os",
+			"os.path.join(sublime.packages_path(), 'Default')",
+			"sublime.packages_path()",
+			"sys.modules['Default.indentation']",
+			"sys.modules",
+			"__import__('indentation')",
+			"__import__('Default')",
+			"indentation.line_and_normed_pt",
+			"indentation",
+			"indentation = __import__('Default.indentation')",
+			"indentation = __import__('indentation')",
+			"sys.path.append(os.path.join(sublime.packages_path(), 'Default'))",
+			"import os",
+			"import sys",
+			"sys.path.append(os.path.join(sublime.packages_path(), 'Default'))",
+			"reload()"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/zbrox/Dropbox/Projects/instaliker2/app/commands/InstagramLikeCommand.php",
+		"/Users/zbrox/Dropbox/Projects/instaliker2/app/views/settings/index.blade.php",
+		"/Users/zbrox/Dropbox/Projects/instaliker2/app/controllers/SettingsController.php",
+		"/Users/zbrox/Dropbox/Projects/instaliker2/app/routes.php",
+		"/Users/zbrox/Dropbox/Projects/instaliker2/app/controllers/InstagramController.php",
+		"/Users/zbrox/Dropbox/Projects/instaliker2/app/commands/CreateUserCommand.php",
+		"/usr/local/etc/nginx/nginx.conf",
+		"/usr/local/var/log/nginx/error.log",
+		"/usr/local/Cellar/nginx/1.4.3/INSTALL_RECEIPT.json",
+		"/Users/zbrox/Desktop/website/assets/css/style.css",
+		"/Users/zbrox/Desktop/website/index.html",
+		"/Users/zbrox/Desktop/website/assets/js/scripts.js",
+		"/Users/zbrox/Desktop/website/style.css",
+		"/Users/zbrox/Documents/Arduino/ixdp_ultrasonic/Serial Monitor - :dev:tty.usbserial-A7006wJi",
+		"/Users/zbrox/Documents/Arduino/ixdp_ultrasonic/ixdp_ultrasonic.ino",
+		"/Users/zbrox/Documents/Arduino/servo_bounce_silvernpinservo_and_continuous/servo_bounce_silvernpinservo_and_continuous.ino",
+		"/Users/zbrox/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/zbrox/Library/Application Support/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/Users/zbrox/Dropbox/Projects/instaliker2/app/controllers/ActionLogController.php",
+		"/Users/zbrox/Dropbox/Projects/instaliker2/app/models/ActionLog.php",
+		"/Users/zbrox/Dropbox/Projects/Quadrat/.git/COMMIT_EDITMSG",
+		"/Users/zbrox/Dropbox/Projects/Quadrat/application/modules/machina/config/documents.php",
+		"/Users/zbrox/Dropbox/Projects/Quadrat/application/modules/machina/controllers/pages.php",
+		"/Users/zbrox/Dropbox/Projects/Quadrat/public/assets/css/machina.css",
+		"/Users/zbrox/Dropbox/Projects/Quadrat/application/modules/machina/views/pages/edit.php",
+		"/Users/zbrox/Dropbox/Projects/Quadrat/application/modules/machina/config/routes.php",
+		"/Users/zbrox/Dropbox/Projects/Quadrat/application/config/config.php",
+		"/Users/zbrox/Dropbox/Projects/Quadrat/system/core/Config.php",
+		"/Users/zbrox/Dropbox/Projects/Quadrat/application/config/database.php",
+		"/usr/local/etc/nginx/sites-enabled/square.dev",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata3/app/config/packages/way/guard-laravel/guard.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata3/app/filters.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata3/composer.json",
+		"/usr/local/etc/nginx/sites-enabled/instagram.dev",
+		"/Users/zbrox/Dropbox/Projects/instaliker/src/beanstalkd/instagram/Relationships.py",
+		"/Users/zbrox/Desktop/index.html",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/controllers/cronjobs.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/controllers/rounds.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/models/prediction_model.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/models/round_model.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/models/notification_model.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/views/rounds/edit.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/config/email.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/.git/COMMIT_EDITMSG",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/index.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/functions-enfold.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/includes/admin/register-portfolio.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/single-portfolio.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/functions.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/plugins/arscode-social-slider/js/userscripts-mobile.js",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/js/fixed-pos-mobile.js",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/css/custom.css",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/plugins/arscode-social-slider/js/userscripts.js",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/plugins/arscode-social-slider/index.html",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/header.php",
+		"/Users/zbrox/Library/Caches/Cleanup At Startup/Transmit/B6F13ECE-1D04-443E-B8FC-0F5FA05EE09D/header.php",
+		"/Users/zbrox/Library/Caches/Cleanup At Startup/Transmit/BB177C3E-418C-4D0F-990E-4DECFDA7B870/custom.css",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/css/dynamic-css.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/config-templatebuilder/avia-template-builder/assets/css/avia-modal.css",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/config-templatebuilder/avia-template-builder/assets/css/avia-builder.css",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/config-layerslider/LayerSlider/css/layerslider.css",
+		"/Users/zbrox/Library/Caches/Cleanup At Startup/Transmit/42104E4D-5276-457D-87CA-92EF28579776/header.php",
+		"/Users/zbrox/Desktop/corsa/wp-content/themes/twentytwelve/style.css",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/libraries/Trans.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/install.php",
+		"/Users/zbrox/Dropbox/Projects/Chalmers/IxD Project 1/export.csv",
+		"/Users/zbrox/Dropbox/Projects/Machina/.git/MERGE_MSG",
+		"/Users/zbrox/Dropbox/Projects/Machina/.git/COMMIT_EDITMSG",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/views/system/help.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/helpers/machina_var_helper.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/controllers/help.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/views/pages/edit.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/views/system/edit_help.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/config/help.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/docs/css/bootstrap.css",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/views/pages/_form.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/views/images/_edit_image.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/controllers/settings.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/config/nav.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/system/helpers/file_helper.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/helpers/dir_helper.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/config/database.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/language/bulgarian/migration.php",
+		"/usr/local/etc/nginx/sites-enabled/machina.dev",
+		"/usr/local/etc/nginx/sites-enabled/test.dev",
+		"/Users/zbrox/Dropbox/Projects/Machina/system/core/Config.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/controllers/translations.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/config/translations.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/config/routes.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/core/MY_Model.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/controllers/newsletters.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/models/newsletter_subscriber_model.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/config/assets.yml",
+		"/Users/zbrox/Dropbox/Projects/Machina/public/assets/less/machina.less",
+		"/Users/zbrox/Library/Application Support/Sublime Text 3/Packages/Alignment/Default (OSX).sublime-keymap",
+		"/Users/zbrox/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/zbrox/Dropbox/Projects/Machina/public/assets/js/libs/markdown.js",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/config/asset_routes.yml",
+		"/Users/zbrox/Dropbox/Projects/Machina/public/assets/js/libs/bootstrap-markdown.js",
+		"/Users/zbrox/Dropbox/Projects/Machina/public/assets/css/machina.css",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/views/newsletter_subscribers/index.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/config/config.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/core/Machina_Controller.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/core/MY_Controller.php",
+		"/Users/zbrox/Dropbox/Projects/Machina/application/modules/machina/config/language.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/models/league_model.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/helpers/football_helper.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/config/routes.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/controllers/leagues.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/config/countries.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/views/embed/user_nav.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/controllers/dashboard.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/config/database.php",
+		"/Users/zbrox/Dropbox/Projects/TriKorni/ligata2/application/controllers/asset.php",
+		"/Users/zbrox/Dropbox/Projects/instaliker/.gitignore",
+		"/var/folders/sn/wlm97f3s5lb66qg9vs6phjzm0000gn/T/com.apple.mail/com.apple.mail.drag/ferrari_bhills.jpg",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/section.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/single.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/config-woocommerce/config.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/includes/loop-index.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/page.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/includes/loop-page.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/includes/loop-portfolio-single.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/framework/php/class-breadcrumb.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/footer.php",
+		"/Users/zbrox/Dropbox/Projects/scuderiacorsa/wp-content/themes/enfold/config-templatebuilder/avia-shortcodes/columns.php",
+		"/Users/zbrox/Dropbox/Projects/SPP/magento/app/code/local/Spp/CarSelect/Catalog/Block/Product/List.php",
+		"/Users/zbrox/Dropbox/Projects/SPP/magento/app/design/frontend/meigeetheme/default/template/page/html/header.phtml"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Integer",
+			"#abstract",
+			"#photos",
+			"photos/",
+			"half",
+			"millisec",
+			"times",
+			"driveMo",
+			"continuous[",
+			"pingSpeed",
+			"pingTimer",
+			"unsigned long",
+			"serial",
+			"pingPin",
+			"lastMotorMovement",
+			"[container]",
+			"pingPin",
+			"motorPin",
+			"buttonState",
+			"shakeit",
+			"bouncer",
+			"myservo",
+			"curr_pos",
+			"end_pos",
+			"start_pos",
+			"forward",
+			"running",
+			"motorPin",
+			"servoPin",
+			"inputPin",
+			"buttonPin",
+			"tag",
+			"Tag",
+			"tag",
+			"quadrat",
+			"instagram_tag_id",
+			"<strong>",
+			"round",
+			"$options",
+			"today",
+			"portfolio",
+			"breadcrumb",
+			"BV",
+			"head",
+			"fb",
+			".fbl",
+			".rsOverflow",
+			"enzo-web",
+			"rsNav",
+			"@media",
+			".avia_textblock",
+			"translations_repo_url",
+			"echo",
+			"die",
+			"include",
+			"$this->ci",
+			"@$this-",
+			"$this->ci->config->item(",
+			"$this->ci",
+			"protected",
+			"not_al",
+			"config",
+			"BASEPATH",
+			"markdown-pr",
+			"preview",
+			".btn.s",
+			".btn.success",
+			"success",
+			"inverse",
+			".btn",
+			"submit",
+			"error",
+			"quotes",
+			"stretch_full container_wrap alternate_color light_bg_color title_container",
+			"droids",
+			"url",
+			"fblbHead",
+			"social-slider",
+			"content units",
+			"template-page content",
+			"<?php avia_layout_class( 'content' ); ?> units",
+			"template-page content <?php avia_layout_class( 'content' ); ?> units",
+			"units'",
+			"units",
+			"template-page content nine alpha units",
+			"<div class=\"template-page ",
+			"<div class=\"template-page content nine alpha units\">",
+			"avia_breadcrumbs(",
+			"<span typeof=\"v:Breadcrumb\">",
+			"av_one_half",
+			"eav_full",
+			"carselect",
+			"carsele",
+			"carselect",
+			"model",
+			"make",
+			"getAttributeValue",
+			"_createItem",
+			"_prepareAttribute",
+			"year",
+			"models",
+			"makes",
+			"<module>",
+			"[module]",
+			"`carselect`",
+			"<module>",
+			"<Module>",
+			"<module>",
+			"<Module>",
+			"<module>",
+			"<Module>",
+			"<Namespace>",
+			"[module]",
+			"[Module]",
+			"[Namespace]",
+			"[module]",
+			"ImportAttributes",
+			"$levels",
+			"create_new_app",
+			"app",
+			"session.app",
+			" | ",
+			"clien",
+			"app",
+			"product",
+			"tables",
+			"block_gamut",
+			"class M"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			", ",
+			"module",
+			"vendor",
+			"Vendor",
+			"Corvette",
+			"Ferrari",
+			"Ford",
+			"Mini Cooper",
+			"Nissan",
+			"Mitsubishi",
+			"Porsche",
+			"",
+			",Breaks,",
+			"* ",
+			"*"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "lab1.hs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								366,
+								366
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SublimeHaskell/Haskell-SublimeHaskell.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 275.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.ixdp_final":
+	{
+		"height": 100.0
+	},
+	"output.ixdp_ultrasonic":
+	{
+		"height": 100.0
+	},
+	"output.stino_log":
+	{
+		"height": 100.0
+	},
+	"project": "Functional Programming.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"route",
+				"app/routes.php"
+			],
+			[
+				"settings",
+				"app/controllers/SettingsController.php"
+			],
+			[
+				"acti",
+				"app/controllers/ActionLogController.php"
+			],
+			[
+				"actio",
+				"app/models/ActionLog.php"
+			],
+			[
+				"tagco",
+				"app/controllers/TagController.php"
+			],
+			[
+				"style",
+				"public/assets/css/frontend-style.css"
+			],
+			[
+				"productvi",
+				"application/views/products/view.php"
+			],
+			[
+				"documen",
+				"application/modules/machina/config/documents.php"
+			],
+			[
+				"machina.css",
+				"public/assets/css/machina.css"
+			],
+			[
+				"docu",
+				"application/modules/machina/config/documents.php"
+			],
+			[
+				"pagesedit",
+				"application/modules/machina/views/pages/edit.php"
+			],
+			[
+				"routes",
+				"application/modules/machina/config/routes.php"
+			],
+			[
+				"config",
+				"application/config/config.php"
+			],
+			[
+				"confi",
+				"system/core/Config.php"
+			],
+			[
+				"databa",
+				"application/config/database.php"
+			],
+			[
+				"filte",
+				"app/filters.php"
+			],
+			[
+				"comp",
+				"composer.json"
+			],
+			[
+				"dbmode",
+				"src/beanstalkd/database/DBModel.py"
+			],
+			[
+				"team",
+				"app/controllers/TeamController.php"
+			],
+			[
+				"rounds",
+				"application/controllers/rounds.php"
+			],
+			[
+				"round/ed",
+				"application/views/rounds/edit.php"
+			],
+			[
+				"predictio",
+				"application/models/prediction_model.php"
+			],
+			[
+				"round_mo",
+				"application/models/round_model.php"
+			],
+			[
+				"notific",
+				"application/models/notification_model.php"
+			],
+			[
+				"registerpo",
+				"includes/admin/register-portfolio.php"
+			],
+			[
+				"portfolio",
+				"single-portfolio.php"
+			],
+			[
+				"func",
+				"functions.php"
+			],
+			[
+				"custom",
+				"css/custom.css"
+			],
+			[
+				"functi",
+				"functions.php"
+			],
+			[
+				"cust",
+				"css/custom.css"
+			],
+			[
+				"custo",
+				"css/custom.css"
+			],
+			[
+				"heade",
+				"header.php"
+			],
+			[
+				"inst",
+				"install.php"
+			],
+			[
+				"trans",
+				"application/modules/machina/libraries/Trans.php"
+			],
+			[
+				"var_he",
+				"application/modules/machina/helpers/machina_var_helper.php"
+			],
+			[
+				"boo",
+				"docs/css/bootstrap.css"
+			],
+			[
+				"_form",
+				"application/modules/machina/views/pages/_form.php"
+			],
+			[
+				"help",
+				"application/modules/machina/views/system/help.php"
+			],
+			[
+				"file_he",
+				"system/helpers/file_helper.php"
+			],
+			[
+				"dir_hel",
+				"application/modules/machina/helpers/dir_helper.php"
+			],
+			[
+				"transla",
+				"application/modules/machina/controllers/translations.php"
+			],
+			[
+				"machina_va",
+				"application/modules/machina/helpers/machina_var_helper.php"
+			],
+			[
+				"translati",
+				"application/modules/machina/config/translations.php"
+			],
+			[
+				"install",
+				"install.php"
+			],
+			[
+				"nav",
+				"application/modules/machina/config/nav.php"
+			],
+			[
+				"my_model",
+				"application/core/MY_Model.php"
+			],
+			[
+				"newsletter_sub",
+				"application/modules/machina/models/newsletter_subscriber_model.php"
+			],
+			[
+				"newsletters",
+				"application/modules/machina/controllers/newsletters.php"
+			],
+			[
+				"news",
+				"application/modules/machina/controllers/newsletters.php"
+			],
+			[
+				"machina.less",
+				"public/assets/less/machina.less"
+			],
+			[
+				"asset",
+				"application/modules/machina/config/asset_routes.yml"
+			],
+			[
+				"assets.",
+				"application/modules/machina/config/assets.yml"
+			],
+			[
+				"boot",
+				"docs/css/bootstrap.css"
+			],
+			[
+				"pages/_form",
+				"application/modules/machina/views/pages/_form.php"
+			],
+			[
+				"assets",
+				"application/modules/machina/config/assets.yml"
+			],
+			[
+				"core/",
+				"application/core/MY_Controller.php"
+			],
+			[
+				"leagues",
+				"application/controllers/leagues.php"
+			],
+			[
+				"league",
+				"application/models/league_model.php"
+			],
+			[
+				"count",
+				"application/config/countries.php"
+			],
+			[
+				"user_nav",
+				"application/views/embed/user_nav.php"
+			],
+			[
+				"page.xml",
+				"magento/app/design/frontend/meigeetheme/default/layout/page.xml"
+			],
+			[
+				"meipageheade",
+				"app/design/frontend/meigeetheme/default/template/page/html/header.phtml"
+			],
+			[
+				"meigeheader",
+				"app/design/frontend/meigeetheme/default/template/page/html/header.phtml"
+			],
+			[
+				"readme",
+				"README.md"
+			],
+			[
+				"home",
+				"application/controllers/home.php"
+			],
+			[
+				"machina_",
+				"application/modules/machina/helpers/machina_var_helper.php"
+			],
+			[
+				"languag",
+				"application/modules/machina/config/language.php"
+			],
+			[
+				"readm",
+				"README.md"
+			],
+			[
+				"additi",
+				"application/modules/machina/libraries/Additional.php"
+			],
+			[
+				"coupons",
+				"application/migrations/023_create_coupons.php"
+			],
+			[
+				"newsletters.php",
+				"application/modules/machina/controllers/newsletters.php"
+			],
+			[
+				"newsletter",
+				"application/controllers/newsletter.php"
+			],
+			[
+				"language",
+				"system/helpers/language_helper.php"
+			],
+			[
+				"translations",
+				"application/modules/machina/config/translations.php"
+			],
+			[
+				"machinacont",
+				"application/modules/machina/core/Machina_Controller.php"
+			],
+			[
+				"machinacontr",
+				"docs/classes/Machina_Controller.html"
+			],
+			[
+				"lang",
+				"system/helpers/language_helper.php"
+			],
+			[
+				"machinalang",
+				"application/modules/machina/config/language.php"
+			],
+			[
+				"markdown",
+				"application/modules/machina/vendor/markdown.php"
+			],
+			[
+				"formhe",
+				"system/helpers/form_helper.php"
+			],
+			[
+				"form",
+				"application/modules/machina/views/account/_form.php"
+			],
+			[
+				"facade",
+				"vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php"
+			],
+			[
+				"filelo",
+				"vendor/laravel/framework/src/Illuminate/Config/FileLoader.php"
+			],
+			[
+				"blocknewsletter_mod",
+				"modules/blocknewsletter_mod/blocknewsletter_mod.css"
+			],
+			[
+				"blockso",
+				"modules/themes/warehouse/css/modules/blocksocial/blocksocial.css"
+			],
+			[
+				"product_list",
+				"themes/warehouse/css/product_list.css"
+			],
+			[
+				"themeswarehousegloba",
+				"themes/warehouse/css/global.css"
+			],
+			[
+				"machinalanghelp",
+				"application/modules/machina/helpers/machina_lang_helper.php"
+			],
+			[
+				"machinasite",
+				"application/modules/machina/config/site.php"
+			],
+			[
+				"machinahtml",
+				"application/modules/machina/helpers/machina_html_helper.php"
+			],
+			[
+				"html_he",
+				"application/modules/machina/helpers/machina_html_helper.php"
+			],
+			[
+				"index.php",
+				"public/index.php"
+			],
+			[
+				"index",
+				"application/index.html"
+			],
+			[
+				"create",
+				"application/migrations/005_create_products.php"
+			],
+			[
+				"createshippingw",
+				"application/migrations/022_create_shipping_weight_thresholds.php"
+			],
+			[
+				"createshipping",
+				"application/migrations/020_create_shipping.php"
+			],
+			[
+				"install.",
+				"install.php"
+			],
+			[
+				"my_mode",
+				"application/core/MY_Model.php"
+			],
+			[
+				"librarishipp",
+				"application/modules/machina/libraries/Shipp.php"
+			],
+			[
+				"shipping",
+				"application/modules/machina/models/shipping_weight_threshold_model.php"
+			],
+			[
+				"pages",
+				"application/modules/machina/controllers/pages.php"
+			],
+			[
+				"prod",
+				"application/modules/machina/controllers/products.php"
+			],
+			[
+				"product",
+				"application/modules/machina/controllers/products.php"
+			],
+			[
+				"picto",
+				"application/modules/machina/libraries/Pictorial.php"
+			],
+			[
+				"pictori",
+				"application/modules/machina/libraries/Pictorial.php"
+			],
+			[
+				"tools",
+				"application/modules/machina/controllers/tools/migrate.php"
+			],
+			[
+				"tools/",
+				"application/modules/machina/controllers/tools/install.php"
+			],
+			[
+				"toolsass",
+				"application/modules/machina/controllers/tools/assets.php"
+			],
+			[
+				"input",
+				"system/core/Input.php"
+			],
+			[
+				"usersind",
+				"application/modules/machina/views/users/index.php"
+			],
+			[
+				"translatiedit",
+				"application/modules/machina/views/translations/edit.php"
+			],
+			[
+				"translationjs",
+				"public/assets/js/machina/translations.js"
+			],
+			[
+				"html",
+				"system/helpers/html_helper.php"
+			],
+			[
+				"machina_html",
+				"application/modules/machina/helpers/machina_html_helper.php"
+			],
+			[
+				"orders_form",
+				"application/modules/machina/views/orders/_form.php"
+			],
+			[
+				"create_order",
+				"application/migrations/006_create_orders.php"
+			],
+			[
+				"contorders",
+				"application/modules/machina/controllers/orders.php"
+			],
+			[
+				"orderview",
+				"application/modules/machina/views/orders/_view_items.php"
+			],
+			[
+				"ordersview",
+				"application/modules/machina/views/orders/view.php"
+			],
+			[
+				"view_info",
+				"application/modules/machina/views/orders/_view_info.php"
+			],
+			[
+				"texthe",
+				"system/helpers/text_helper.php"
+			],
+			[
+				"controorders",
+				"application/modules/machina/controllers/orders.php"
+			],
+			[
+				"orderviewinfo",
+				"application/modules/machina/views/orders/_view_info.php"
+			],
+			[
+				"orderind",
+				"application/modules/machina/views/orders/index.php"
+			],
+			[
+				"order",
+				"application/modules/machina/controllers/orders.php"
+			],
+			[
+				"machinadate",
+				"application/modules/machina/helpers/machina_date_helper.php"
+			],
+			[
+				"datehe",
+				"system/helpers/date_helper.php"
+			],
+			[
+				"accountedit",
+				"application/modules/machina/views/account/edit.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 329.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
