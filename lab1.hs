@@ -37,7 +37,10 @@ power2 n k | even k = power2 (n*n) (div k 2)
 
 -- Part 4B
 prop_powers :: Integer -> Integer -> Bool
-prop_powers n k = (power n l == power1 n l) && (power1 n l == power2 n l)
+prop_powers n k = (power n k == power1 n k) && (power1 n k == power2 n k)
+    
+prop_powers' :: Integer -> Integer -> Bool 
+prop_powers' n k =(power n l == power1 n l) && (power1 n l == power2 n l)
     where l = abs(k) {- since we're only interested in positive k -}
 
 -- Part 4C
