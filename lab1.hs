@@ -47,6 +47,6 @@ test_prop_powers ((n,k):tuples) = prop_powers n k && test_prop_powers tuples
 
 
 main = do 
-  print (test_prop_powers [(n,k) | n <- [-5..5], k <- [1..5]])
+  print (test_prop_powers [(n,k) | n <- [-5..5], k <- [0..5]])
 
   quickCheck prop_powers
