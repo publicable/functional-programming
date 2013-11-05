@@ -56,3 +56,5 @@ winner h1 _  | gameOver h1         = Bank       -- Bank always wins if Guest is 
 winner _  h2 | gameOver h2         = Guest      -- since we know Guest is not bust
 winner h1 h2 | value h1 > value h2 = Guest      -- since we know neither player is bust
              | otherwise           = Bank
+
+--- End of part A ---
