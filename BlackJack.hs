@@ -45,5 +45,14 @@ numberOfAces Empty                              = 0
 numberOfAces (Add card hand) | rank card == Ace = 1 + numberOfAces hand
                              | otherwise        = 0 + numberOfAces hand
 
-gameOver ::Hand -> Bool
+-- Checks if the hand is over the limit or not
+gameOver :: Hand -> Bool
 gameOver hand = value hand > 21
+
+-- Checks which player is the winner,
+-- Guest (first hand) or Bank (second hand)
+winner :: Hand -> Hand -> Player
+winner h1 _  | gameOver h1         = Bank       -- Bank always wins if Guest is bust
+winner _  h2 | gameOver h2         = Guest      -- since we know Guest is not bust
+winner h1 h2 | value h1 > value h2 = Guest      -- since we know neither player is bust
+             | otherwise           = Bank
