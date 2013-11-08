@@ -25,7 +25,7 @@ value Empty                            = 0
    in order to change ace value to 1 -}
 value (Add card hand) | handValue > 21 = handValue - noa * 10
   where
-    handValue = valueCard card + value hand
+    handValue = valueCard card + handValue hand
     noa = numberOfAces (Add card hand)    
 value (Add card hand)                  = valueCard card + value hand
 
