@@ -18,16 +18,17 @@ empty = Empty
 
 -- Calculates the value of the given hand
 value :: Hand -> Integer
-value Empty                            = 0
+value Empty                      = 0
 
 {- First calculates if hand is over 21, 
    if it is subtracts 10 for every ace
    in order to change ace value to 1 -}
-value (Add card hand) | handValue > 21 = handValue - noa * 10
-  where
-    handValue = valueCard card + handValue hand
-    noa = numberOfAces (Add card hand)    
-value (Add card hand)                  = valueCard card + value hand
+value hand | handValue hand > 21 = handValue hand - noa * 10    
+           | otherwise           = handValue hand
+    where
+    handValue (Add card hand)= valueCard card + handValue hand
+    handValue Empty          = 0
+    noa = numberOfAces hand
 
 -- Calculates the value of a rank
 valueRank :: Rank -> Integer
