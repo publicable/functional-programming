@@ -31,7 +31,14 @@ isSolved sud | and rowsSummary == True = False
 
 -- printSudoku sud prints a representation of the sudoku sud on the screen
 printSudoku :: Sudoku -> IO ()
-printSudoku = undefined
+printSudoku sud = sequence_
+  [printRow row | row <- rows sud]
+
+printRow :: [Maybe Int] -> IO()
+printRow [] = do putStrLn ""
+printRow (x:xs) = do
+  putStr $ if (isNothing x) then "." else show $ fromJust x
+  printRow xs
 
 -- readSudoku file reads from the file, and either delivers it, or stops
 -- if the file did not contain a sudoku
