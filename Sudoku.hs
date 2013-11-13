@@ -2,6 +2,7 @@ module Sudoku where
 
 import Test.QuickCheck
 import Data.Maybe
+import Data.Char
 
 -------------------------------------------------------------------------
 
@@ -43,7 +44,15 @@ printRow (x:xs) = do
 -- readSudoku file reads from the file, and either delivers it, or stops
 -- if the file did not contain a sudoku
 readSudoku :: FilePath -> IO Sudoku
-readSudoku = undefined
+readSudoku path = do
+  fileContents <- readFile path
+  let fileLines = lines fileContents
+  -- implement check for invalid sudoku file with isSudoku
+  return (Sudoku [readLine line | line <- fileLines])
+  
+readLine :: String -> [Maybe Int]
+readLine line = 
+  [ if (x == '.') then Nothing else (Just (ord x)) | x <- line ]
 
 -------------------------------------------------------------------------
 
