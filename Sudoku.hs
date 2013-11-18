@@ -1,7 +1,6 @@
 module Sudoku where
 
 import Test.QuickCheck
-import Data.Maybe
 import Data.Char
 
 -------------------------------------------------------------------------
@@ -18,15 +17,15 @@ allBlankSudoku = Sudoku (replicate 9 row)
 -- puzzle
 isSudoku :: Sudoku -> Bool
 isSudoku sud | length (rows sud) /= 9 = False
-             | (and lengthRows) == False = False
+             | not (and lengthRows) = False
              | otherwise = True
-  where lengthRows = [ (length row) == 9 | row <- rows sud]
+  where lengthRows = [ length row == 9 | row <- rows sud]
 
 -- isSolved sud checks if sud is already solved, i.e. there are no blanks
 isSolved :: Sudoku -> Bool
-isSolved sud | and rowsSummary == True = False
+isSolved sud | and rowsSummary = False
              | otherwise = True
-  where rowsSummary = [elem Nothing row | row <- rows sud]
+  where rowsSummary = [Nothing `elem` row | row <- rows sud]
 
 -------------------------------------------------------------------------
 
@@ -36,9 +35,9 @@ printSudoku sud = sequence_
   [printRow row | row <- rows sud]
 
 printRow :: [Maybe Int] -> IO()
-printRow [] = do putStrLn ""
+printRow [] = putStrLn ""
 printRow (x:xs) = do
-  putStr $ if (isNothing x) then "." else show $ fromJust x
+  putStr $ maybe "." show x
   printRow xs
 
 -- readSudoku file reads from the file, and either delivers it, or stops
@@ -48,22 +47,34 @@ readSudoku path = do
   fileContents <- readFile path
   let fileLines = lines fileContents
   -- implement check for invalid sudoku file with isSudoku
-  return (Sudoku [readLine line | line <- fileLines])
+  let sudoku = Sudoku [readLine line | line <- fileLines]
+  if isSudoku sudoku then
+    return sudoku
+  else
+    error "Invalid sudoku"
   
 readLine :: String -> [Maybe Int]
 readLine line = 
-  [ if (x == '.') then Nothing else (Just (ord x)) | x <- line ]
+  [ if x == '.' then Nothing else Just $ ord x | x <- line ]
 
 -------------------------------------------------------------------------
 
 -- cell generates an arbitrary cell in a Sudoku
 cell :: Gen (Maybe Int)
-cell = undefined
+cell = frequency [(9, return Nothing), (1, rNumCell)]
+  where rNumCell = elements $ map Just [1..9]
 
 -- an instance for generating Arbitrary Sudokus
 instance Arbitrary Sudoku where
   arbitrary =
     do rows <- sequence [ sequence [ cell | j <- [1..9] ] | i <- [1..9] ]
        return (Sudoku rows)
+
+prop_Sudoku :: Sudoku -> Bool
+prop_Sudoku sud = isSudoku sud
+
+-- Use the property with quickCheck
+main = do
+  quickCheck prop_Sudoku
 
 -------------------------------------------------------------------------
