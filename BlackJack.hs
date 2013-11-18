@@ -96,8 +96,11 @@ playBank' deck bankHand | otherwise            = playBank' deck' bankHand'
     where 
     (deck', bankHand') = draw deck bankHand
 
+
 shuffle::StdGen -> Hand -> Hand
+shuffle _ Empty = error "shuffle: the deck is empty"
 shuffle g deck = shuffle' g deck Empty
+
 
 shuffle'::StdGen -> Hand -> Hand ->Hand
 shuffle' g Empty shuffled = shuffled
@@ -110,13 +113,16 @@ shuffle' g deck shuffled = shuffle' g' deck' (Add card shuffled)
 
 --gives the nth card and the deck without the nth card.
 removeCard::Integer -> Hand -> (Card, Hand)
-removeCard n (Add card hand) = removeCard' n hand Empty
+removeCard _ Empty = error "removeCard: deck is empty"
+removeCard n hand = removeCard' n hand Empty
 
 removeCard'::Integer -> Hand -> Hand -> (Card, Hand)
 --when the card is found, give it as result and add upp the two parts of the deck to one deck
 removeCard' 1 (Add card lower) upper = (card,lower<+upper)
 --iterates over cards by moving them one by one from lower to upper part of deck.
 removeCard' n (Add card lower) upper = removeCard' (n-1) lower (Add card upper)
+
+removeCard' n Empty _ = error "removeCard': deck is empty"
 
 belongsTo :: Card -> Hand -> Bool
 c `belongsTo` Empty = False
