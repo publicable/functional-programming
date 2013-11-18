@@ -106,7 +106,7 @@ shuffle' g Empty shuffled = shuffled
 shuffle' g deck shuffled = shuffle' g' deck' (Add card shuffled) 
     where 
     (card, deck') = removeCard n deck -- uses helperfunction to remove nth card from deck.
-    (n, g') = RandomR (1, size deck) g -- generates random values.
+    (n, g') = randomR (1, (size deck)) g -- generates random values.
 
 --gives the nth card and the deck without the nth card.
 removeCard::Integer -> Hand -> (Card, Hand)
@@ -116,7 +116,7 @@ removeCard'::Integer -> Hand -> Hand -> (Card, Hand)
 --when the card is found, give it as result and add upp the two parts of the deck to one deck
 removeCard' 1 (Add card lower) upper = (card,lower<+upper)
 --iterates over cards by moving them one by one from lower to upper part of deck.
-removeCard' n (Add card lower) upper = removeCard' n-1 lower (Add card upper)
+removeCard' n (Add card lower) upper = removeCard' (n-1) lower (Add card upper)
 
 belongsTo :: Card -> Hand -> Bool
 c `belongsTo` Empty = False
