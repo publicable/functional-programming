@@ -55,7 +55,7 @@ readSudoku path = do
   
 readLine :: String -> [Maybe Int]
 readLine line = 
-  [ if x == '.' then Nothing else Just $ ord x | x <- line ]
+  [ if x == '.' then Nothing else Just $ digitToInt x | x <- line ]
 
 -------------------------------------------------------------------------
 
@@ -67,14 +67,13 @@ cell = frequency [(9, return Nothing), (1, rNumCell)]
 -- an instance for generating Arbitrary Sudokus
 instance Arbitrary Sudoku where
   arbitrary =
-    do rows <- sequence [ sequence [ cell | j <- [1..9] ] | i <- [1..9] ]
-       return (Sudoku rows)
+    do rows' <- sequence [ sequence [ cell | j <- [1..9] ] | i <- [1..9] ]
+       return (Sudoku rows')
 
 prop_Sudoku :: Sudoku -> Bool
 prop_Sudoku sud = isSudoku sud
 
 -- Use the property with quickCheck
+main :: IO()
 main = do
   quickCheck prop_Sudoku
-
--------------------------------------------------------------------------
