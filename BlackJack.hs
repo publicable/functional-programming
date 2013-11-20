@@ -98,7 +98,7 @@ playBank' deck bankHand | otherwise            = playBank' deck' bankHand'
 
 
 shuffle::StdGen -> Hand -> Hand
-shuffle _ Empty = error "shuffle: the deck is empty"
+shuffle _ Empty = Empty
 shuffle g deck = shuffle' g deck Empty
 
 
