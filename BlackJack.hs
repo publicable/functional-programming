@@ -12,7 +12,7 @@ module BlackJack where
 import Cards
 import Wrapper
 import System.Random
-
+import Test.QuickCheck
 
 
 -- Gives and empty hand
@@ -66,13 +66,14 @@ winner h1 h2 | value h1 > value h2 = Guest      -- since we know neither player 
 (<+)::Hand -> Hand ->Hand
 hand <+ Empty = hand
 Empty <+ hand = hand
-(Add card hand1) <+ hand2 = hand1 <+ (Add card hand2)
+(Add card Empty) <+ hand = Add card hand
+(Add card hand1) <+ hand2 = Add card (hand1 <+ hand2)
 
 prop_onTopOf_assoc :: Hand -> Hand -> Hand -> Bool 
 prop_onTopOf_assoc p1 p2 p3 = p1 <+ (p2 <+ p3) == (p1 <+ p2) <+ p3
 
 prop_size_onTopOf :: Hand -> Hand -> Bool
-prop_size_onTopOf p1 p2 = (size p1) + (size p2) == size (p1 <+ p2)
+prop_size_onTopOf p1 p2 = size p1 + size p2 == size (p1 <+ p2)
 
 
 fullDeck::Hand
@@ -81,12 +82,12 @@ fullDeck = fullSuit Hearts <+ fullSuit Diamonds <+ fullSuit Spades  <+ fullSuit 
     fullSuit suit = addNumericsTo suit (Add (Card Ace suit)(Add (Card King suit)
                       (Add (Card Queen suit) (Add (Card Jack suit)
                         Empty)))) 10
-    addNumericsTo suit hand 2 = (Add (Card (Numeric 2) suit) hand)
+    addNumericsTo suit hand 2 = Add (Card (Numeric 2) suit) hand
     addNumericsTo suit hand n = addNumericsTo suit (Add (Card (Numeric n) suit) hand) (n-1)
     
 draw::Hand -> Hand -> (Hand,Hand)
 draw Empty _ = error "draw: the deck is empty"
-draw (Add card hand1) hand2 = (hand1, (Add card hand2))
+draw (Add card hand1) hand2 = (hand1, Add card hand2)
 
 playBank::Hand -> Hand
 playBank deck = playBank' deck Empty
@@ -97,7 +98,7 @@ playBank deck = playBank' deck Empty
 -}
 playBank'::Hand -> Hand -> Hand
 playBank' deck bankHand | value bankHand >= 16 = bankHand
-playBank' deck bankHand | otherwise            = playBank' deck' bankHand'
+playBank' deck bankHand                        = playBank' deck' bankHand'
     where 
     (deck', bankHand') = draw deck bankHand
 
@@ -114,7 +115,13 @@ shuffle' g Empty shuffled = shuffled
 shuffle' g deck shuffled = shuffle' g' deck' (Add card shuffled) 
     where 
     (card, deck') = removeCard n deck -- uses helperfunction to remove nth card from deck.
-    (n, g') = randomR (1, (size deck)) g -- generates random values.
+    (n, g') = randomR (1, size deck) g -- generates random values.
+
+prop_shuffle_sameCards :: StdGen -> Card -> Hand -> Bool 
+prop_shuffle_sameCards g c h = c `belongsTo` h == c `belongsTo` shuffle g h
+
+prop_size_shuffle :: StdGen -> Hand -> Bool
+prop_size_shuffle g h = size h == size (shuffle g h)
 
 --gives the nth card and the deck without the nth card.
 removeCard::Integer -> Hand -> (Card, Hand)
