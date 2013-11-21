@@ -72,13 +72,12 @@ Empty <+ hand = hand
 fullDeck::Hand
 fullDeck = fullSuit Hearts <+ fullSuit Diamonds <+ fullSuit Spades  <+ fullSuit Clubs
     where
-    fullSuit suit = (Add (Card Ace suit)(Add (Card King suit)
+    fullSuit suit = addNumericsTo suit (Add (Card Ace suit)(Add (Card King suit)
                       (Add (Card Queen suit) (Add (Card Jack suit)
-                      (Add (Card (Numeric 10) suit) (Add (Card (Numeric 9) suit) 
-                      (Add (Card (Numeric 8) suit) (Add (Card (Numeric 7) suit) 
-                      (Add (Card (Numeric 6) suit) (Add (Card (Numeric 5) suit) 
-                      (Add (Card (Numeric 4) suit) (Add (Card (Numeric 3) suit) 
-                      (Add (Card (Numeric 2) suit) Empty)))))))))))))
+                        Empty)))) 10
+    addNumericsTo suit hand 2 = (Add (Card (Numeric 2) suit) hand)
+    addNumericsTo suit hand n = addNumericsTo suit (Add (Card (Numeric n) suit) hand) (n-1)
+    
 draw::Hand -> Hand -> (Hand,Hand)
 draw Empty _ = error "draw: the deck is empty"
 draw (Add card hand1) hand2 = (hand1, (Add card hand2))
