@@ -68,6 +68,12 @@ hand <+ Empty = hand
 Empty <+ hand = hand
 (Add card hand1) <+ hand2 = hand1 <+ (Add card hand2)
 
+prop_onTopOf_assoc :: Hand -> Hand -> Hand -> Bool 
+prop_onTopOf_assoc p1 p2 p3 = p1 <+ (p2 <+ p3) == (p1 <+ p2) <+ p3
+
+prop_size_onTopOf :: Hand -> Hand -> Bool
+prop_size_onTopOf p1 p2 = (size p1) + (size p2) == size (p1 <+ p2)
+
 
 fullDeck::Hand
 fullDeck = fullSuit Hearts <+ fullSuit Diamonds <+ fullSuit Spades  <+ fullSuit Clubs
@@ -97,7 +103,7 @@ playBank' deck bankHand | otherwise            = playBank' deck' bankHand'
 
 
 shuffle::StdGen -> Hand -> Hand
-shuffle _ Empty = error "shuffle: the deck is empty"
+shuffle _ Empty = Empty
 shuffle g deck = shuffle' g deck Empty
 
 
