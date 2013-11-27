@@ -106,6 +106,9 @@ prop_blanks s = and [isNothing $ ((rows s) !! y) !! x | (y,x) <- blanks s]
   where f (n, i) | i == idx = r
                  | otherwise = n
 
+--prop_findReplace :: [a] -> (Int,a) -> Bool
+--prop_findReplace a (idx,v) = 
+
 update :: Sudoku -> Pos -> Maybe Int -> Sudoku
 update sud (y,x) v = Sudoku ((rows sud) !!= (y, ((rows sud) !! y) !!= (x,v)))
 
@@ -113,10 +116,33 @@ candidates :: Sudoku -> Pos -> [Int]
 candidates sud (y,x) = intersect (intersect inRow inColumn) inThreeByThree
   where inRow = valid (rows sud !! y)
         inColumn = valid ((transpose $ rows sud) !! x)
-        inThreeByThree = []
+        inThreeByThree = valid $ (threeByThreeBlocks $ rows sud) !! quadrant
+        quadrant = rowVal + colVal
+        rowVal = ((y+3) `quot` 3) - 1
+        colVal = (x `quot` 3) * 3
+
+--prop_checkCandidates :: Sudoku -> Pos -> Bool
+--prop_checkCandidates sud (y,x) = 
 
 valid :: Block -> [Int]
 valid block = map fromJust ((map Just [1..9]) \\ block)
+
+
+solve :: Sudoku -> Maybe Sudoku
+solve sud = case isSudoku sud && isOkay sud of 
+              False -> Nothing
+              True -> solve' sud
+
+solve' :: Sudoku -> Maybe Sudoku
+solve' sud = case null (blanks sud) of 
+              True -> Just sud
+              False -> do
+                let pos = head $ blanks sud
+                let cnd = candidates sud pos
+                case null cnd of 
+                  True -> Just sud
+                  False -> solve' (update sud pos $ Just $ head cnd)
+
 
 -- Use the property with quickCheck
 main :: IO()
