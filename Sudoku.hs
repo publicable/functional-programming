@@ -84,15 +84,39 @@ blocks sud = do
   rb ++ cb ++ tb
 
 threeByThreeBlocks :: [[Maybe Int]] -> [Block]
-threeByThreeBlocks rs = concat [[chunk 9 n r | r <- temp] | n <- [0, 9, 18]]
-  where chunk k n ls = take k $ drop n ls
-        temp = [concat $ chunk 3 n [chunk 3 n r | r <- rs] | n <- [0, 3, 6]]
+threeByThreeBlocks rs = [take 9 $ drop n ungroupped | n <- [0,9..72]]
+  where ungroupped = concat [take 3 $ drop n (rs !! i) | n <- [0,3,6], i <- [0..8]]
 
 prop_nineBlocks :: Sudoku -> Bool
 prop_nineBlocks sud = (length $ blocks sud) == 27 && (and [length b == 9 | b <- blocks sud])
 
 isOkay :: Sudoku -> Bool
 isOkay sud = and [isOkayBlock b | b <- blocks sud]
+
+type Pos = (Int,Int)
+
+blanks :: Sudoku -> [Pos]
+blanks sud = [(x,y) | x <- [0..8], y <- [0..8], isNothing ((rows sud !! x) !! y)]
+
+prop_blanks :: Sudoku -> Bool
+prop_blanks s = and [isNothing $ ((rows s) !! y) !! x | (y,x) <- blanks s]
+
+(!!=) :: [a] -> (Int,a) -> [a]
+(!!=) a (idx, r) = map f (zip a [0..])
+  where f (n, i) | i == idx = r
+                 | otherwise = n
+
+update :: Sudoku -> Pos -> Maybe Int -> Sudoku
+update sud (y,x) v = Sudoku ((rows sud) !!= (y, ((rows sud) !! y) !!= (x,v)))
+
+candidates :: Sudoku -> Pos -> [Int]
+candidates sud (y,x) = intersect (intersect inRow inColumn) inThreeByThree
+  where inRow = valid (rows sud !! y)
+        inColumn = valid ((transpose $ rows sud) !! x)
+        inThreeByThree = []
+
+valid :: Block -> [Int]
+valid block = map fromJust ((map Just [1..9]) \\ block)
 
 -- Use the property with quickCheck
 main :: IO()
