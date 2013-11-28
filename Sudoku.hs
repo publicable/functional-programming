@@ -102,12 +102,17 @@ prop_blanks :: Sudoku -> Bool
 prop_blanks s = and [isNothing $ (rows s !! y) !! x | (y,x) <- blanks s]
 
 (!!=) :: [a] -> (Int,a) -> [a]
+(!!=) [] _       = []
 (!!=) a (idx, r) = zipWith (curry f) a [0..]
   where f (n, i) | i == idx = r
                  | otherwise = n
 
---prop_findReplace :: [a] -> (Int,a) -> Bool
---prop_findReplace a (idx,v) = 
+prop_findReplace :: [Int] -> (Int,Int) -> Bool
+prop_findReplace a (idx,v) = do
+  if length a > idx && idx > 0 then
+    a !!= (idx,v) !! idx == v
+  else
+    a !!= (idx,v) == a
 
 update :: Sudoku -> Pos -> Maybe Int -> Sudoku
 update sud (y,x) v = Sudoku (rows sud !!= (y, (rows sud !! y) !!= (x,v)))
