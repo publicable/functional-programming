@@ -18,7 +18,7 @@ allBlankSudoku = Sudoku (replicate 9 row)
 -- isSudoku sud checks if sud is really a valid representation of a sudoku
 -- puzzle
 isSudoku :: Sudoku -> Bool
-isSudoku sud = length (rows sud) == 9 && (and lengthRows)
+isSudoku sud = length (rows sud) == 9 && and lengthRows
   where lengthRows = [ length row == 9 | row <- rows sud]
 
 -- isSolved sud checks if sud is already solved, i.e. there are no blanks
@@ -73,22 +73,22 @@ prop_Sudoku = isSudoku
 type Block = [Maybe Int]
 
 isOkayBlock :: Block -> Bool
-isOkayBlock block = (length $ onlyJust block) == (length (nub $ onlyJust block))
+isOkayBlock block = length (onlyJust block) == length (nub $ onlyJust block)
   where onlyJust b = [ x | x <- b, isJust x]
 
 blocks :: Sudoku -> [Block]
-blocks sud = do
-  let rb = rows sud
-  let cb = transpose rb
-  let tb = threeByThreeBlocks rb
-  rb ++ cb ++ tb
+blocks sud = let
+  rb = rows sud
+  cb = transpose rb
+  tb = threeByThreeBlocks rb
+  in rb ++ cb ++ tb
 
 threeByThreeBlocks :: [[Maybe Int]] -> [Block]
 threeByThreeBlocks rs = [take 9 $ drop n ungroupped | n <- [0,9..72]]
   where ungroupped = concat [take 3 $ drop n (rs !! i) | n <- [0,3,6], i <- [0..8]]
 
 prop_nineBlocks :: Sudoku -> Bool
-prop_nineBlocks sud = (length $ blocks sud) == 27 && (and [length b == 9 | b <- blocks sud])
+prop_nineBlocks sud = length (blocks sud) == 27 && and [length b == 9 | b <- blocks sud]
 
 isOkay :: Sudoku -> Bool
 isOkay sud = and [isOkayBlock b | b <- blocks sud]
@@ -99,10 +99,10 @@ blanks :: Sudoku -> [Pos]
 blanks sud = [(x,y) | x <- [0..8], y <- [0..8], isNothing ((rows sud !! x) !! y)]
 
 prop_blanks :: Sudoku -> Bool
-prop_blanks s = and [isNothing $ ((rows s) !! y) !! x | (y,x) <- blanks s]
+prop_blanks s = and [isNothing $ (rows s !! y) !! x | (y,x) <- blanks s]
 
 (!!=) :: [a] -> (Int,a) -> [a]
-(!!=) a (idx, r) = map f (zip a [0..])
+(!!=) a (idx, r) = zipWith (curry f) a [0..]
   where f (n, i) | i == idx = r
                  | otherwise = n
 
@@ -110,13 +110,13 @@ prop_blanks s = and [isNothing $ ((rows s) !! y) !! x | (y,x) <- blanks s]
 --prop_findReplace a (idx,v) = 
 
 update :: Sudoku -> Pos -> Maybe Int -> Sudoku
-update sud (y,x) v = Sudoku ((rows sud) !!= (y, ((rows sud) !! y) !!= (x,v)))
+update sud (y,x) v = Sudoku (rows sud !!= (y, (rows sud !! y) !!= (x,v)))
 
 candidates :: Sudoku -> Pos -> [Int]
-candidates sud (y,x) = intersect (intersect inRow inColumn) inThreeByThree
+candidates sud (y,x) = inRow `intersect` inColumn `intersect` inThreeByThree
   where inRow = valid (rows sud !! y)
-        inColumn = valid ((transpose $ rows sud) !! x)
-        inThreeByThree = valid $ (threeByThreeBlocks $ rows sud) !! quadrant
+        inColumn = valid (transpose (rows sud) !! x)
+        inThreeByThree = valid $ threeByThreeBlocks (rows sud) !! quadrant
         quadrant = rowVal + colVal
         rowVal = ((y+3) `quot` 3) - 1
         colVal = (x `quot` 3) * 3
@@ -125,27 +125,29 @@ candidates sud (y,x) = intersect (intersect inRow inColumn) inThreeByThree
 --prop_checkCandidates sud (y,x) = 
 
 valid :: Block -> [Int]
-valid block = map fromJust ((map Just [1..9]) \\ block)
+valid block = map fromJust (map Just [1..9] \\ block)
 
 
 solve :: Sudoku -> Maybe Sudoku
-solve sud = case isSudoku sud && isOkay sud of 
-              False -> Nothing
-              True -> solve' sud
+solve sud = if isSudoku sud && isOkay sud then 
+              solve' sud
+            else 
+              Nothing
 
 solve' :: Sudoku -> Maybe Sudoku
-solve' sud = case null (blanks sud) of 
-              True -> Just sud
-              False -> do
+solve' sud = if null (blanks sud) then
+              Just sud
+             else do
                 let pos = head $ blanks sud
                 let cnd = candidates sud pos
-                case null cnd of 
-                  True -> Just sud
-                  False -> solve' (update sud pos $ Just $ head cnd)
-
+                if null cnd then
+                  Nothing
+                else
+                  solve' (update sud pos $ Just $ head cnd)
 
 -- Use the property with quickCheck
 main :: IO()
 main = do
   quickCheck prop_Sudoku
   quickCheck prop_nineBlocks
+  quickCheck prop_blanks
