@@ -115,7 +115,19 @@ prop_findReplace a (idx,v) = do
     a !!= (idx,v) == a
 
 update :: Sudoku -> Pos -> Maybe Int -> Sudoku
-update sud (y,x) v = Sudoku (rows sud !!= (y, (rows sud !! y) !!= (x,v)))
+update sud (y,x) v = do
+  if x >= 0 && x < 9 && y >= 0 && y < 9 then
+    Sudoku (rows sud !!= (y, (rows sud !! y) !!= (x,v)))
+  else
+    sud
+
+prop_checkUpdate :: Sudoku -> Pos -> Maybe Int -> Bool
+prop_checkUpdate sud (y,x) v = 
+  let 
+    s = update sud (y,x) v
+  in
+    (rows s !! y) !! x == v
+      
 
 candidates :: Sudoku -> Pos -> [Int]
 candidates sud (y,x) = inRow `intersect` inColumn `intersect` inThreeByThree
@@ -132,23 +144,17 @@ candidates sud (y,x) = inRow `intersect` inColumn `intersect` inThreeByThree
 valid :: Block -> [Int]
 valid block = map fromJust (map Just [1..9] \\ block)
 
-
 solve :: Sudoku -> Maybe Sudoku
-solve sud = if isSudoku sud && isOkay sud then 
-              solve' sud
-            else 
-              Nothing
+solve sud | not (isSudoku sud) || not (isOkay sud) = Nothing
+          | otherwise                              = solve' sud
 
 solve' :: Sudoku -> Maybe Sudoku
-solve' sud = if null (blanks sud) then
-              Just sud
-             else do
-                let pos = head $ blanks sud
-                let cnd = candidates sud pos
-                if null cnd then
-                  Nothing
-                else
-                  solve' (update sud pos $ Just $ head cnd)
+solve' sud | null (blanks sud) = Just sud
+           | null cnd          = Nothing
+           | otherwise         = solve' (update sud pos $ Just $ head cnd)
+        where 
+          pos = head $ blanks sud
+          cnd = candidates sud pos
 
 -- Use the property with quickCheck
 main :: IO()
