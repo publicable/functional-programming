@@ -108,14 +108,14 @@ prop_blanks s = and [isNothing $ (rows s !! y) !! x | (y,x) <- blanks s]
                  | otherwise = n
 
 prop_findReplace :: [Int] -> (Int,Int) -> Bool
-prop_findReplace a (idx,v) = do
+prop_findReplace a (idx,v) = 
   if length a > idx && idx > 0 then
     a !!= (idx,v) !! idx == v
   else
     a !!= (idx,v) == a
 
 update :: Sudoku -> Pos -> Maybe Int -> Sudoku
-update sud (y,x) v = do
+update sud (y,x) v =
   if x >= 0 && x < 9 && y >= 0 && y < 9 then
     Sudoku (rows sud !!= (y, (rows sud !! y) !!= (x,v)))
   else
@@ -131,34 +131,81 @@ prop_checkUpdate sud (y,x) v =
 
 candidates :: Sudoku -> Pos -> [Int]
 candidates sud (y,x) = inRow `intersect` inColumn `intersect` inThreeByThree
-  where inRow = valid (rows sud !! y)
-        inColumn = valid (transpose (rows sud) !! x)
-        inThreeByThree = valid $ threeByThreeBlocks (rows sud) !! quadrant
+  where inRow = candidates' (rows sud !! y)
+        inColumn = candidates' (transpose (rows sud) !! x)
+        inThreeByThree = candidates' $ threeByThreeBlocks (rows sud) !! quadrant
         quadrant = rowVal + colVal
         rowVal = ((y+3) `quot` 3) - 1
         colVal = (x `quot` 3) * 3
 
---prop_checkCandidates :: Sudoku -> Pos -> Bool
---prop_checkCandidates sud (y,x) = 
+candidates' :: Block -> [Int]
+candidates' block = [1..9] \\ catMaybes block
 
-valid :: Block -> [Int]
-valid block = map fromJust (map Just [1..9] \\ block)
+-- if the sudoku is valid from the begining, it should be valid after inserting a candidate
+-- otherwise it just checks that it is still a sudoku
+prop_checkCandidates :: Sudoku -> Pos -> Property
+prop_checkCandidates sud (y,x) = isOkay sud && validPos 
+    ==> and $ checkAll
+  where
+    validPos      = x >= 0 && x <= 8 && y >= 0 && y <= 8
+    newSud        = update sud (y,x)
+    cnds          = candidates sud (y,x)
+    allCandidates = [newSud $ Just v | v <- cnds]
+    checkAll      = map isSudoku allCandidates ++ map isOkay allCandidates
 
 solve :: Sudoku -> Maybe Sudoku
 solve sud | not (isSudoku sud) || not (isOkay sud) = Nothing
-          | otherwise                              = solve' sud
+          | otherwise                              = solve' sud cnds
+          where
+            pos       = head $ blanks sud
+            cnds      = candidates sud pos
 
-solve' :: Sudoku -> Maybe Sudoku
-solve' sud | null (blanks sud) = Just sud
-           | null cnd          = Nothing
-           | otherwise         = solve' (update sud pos $ Just $ head cnd)
-        where 
-          pos = head $ blanks sud
-          cnd = candidates sud pos
+solve' :: Sudoku -> [Int] -> Maybe Sudoku
+solve' sud cnds | null cnds = Nothing
+                | null $ blanks new_sud = Just new_sud
+                | isNothing solution = solve' sud $ tail cnds
+                | otherwise = solution
+
+                where
+                  new_sud = update sud pos (Just cnd) 
+                  pos = head $ blanks sud
+                  cnd = head cnds
+                  new_pos = head $ blanks new_sud 
+                  new_cnds = candidates new_sud new_pos
+                  solution = solve' new_sud new_cnds
+
+readAndSolve :: FilePath -> IO ()
+readAndSolve path = do
+  sud <- readSudoku path
+  let solution = solve sud
+  if isNothing solution then
+    putStrLn "(no solution)"
+  else
+    printSudoku $ fromJust solution
+
+isSolutionOf :: Sudoku -> Sudoku -> Bool
+isSolutionOf sol sud | not $ isSudoku sol = False
+                     | not $ isOkay sol   = False
+                     | not $ isSolved sol = False
+                     | otherwise = and [sol `atCoord` p == sud `atCoord` p | p <- filled sud]
+
+atCoord :: Sudoku -> Pos -> Maybe Int
+atCoord sud (y,x) = (rows sud !! y) !! x
+
+filled :: Sudoku -> [Pos]
+filled sud = [(x,y) | x <- [0..8], y <- [0..8], isJust ((rows sud !! x) !! y)]
+
+prop_SolveSound :: Sudoku -> Property
+prop_SolveSound sud = isOkay sud 
+  ==> (fromJust $ solve sud) `isSolutionOf` sud
 
 -- Use the property with quickCheck
 main :: IO()
-main = do
+main = 
   quickCheck prop_Sudoku
   quickCheck prop_nineBlocks
   quickCheck prop_blanks
+  quickCheck prop_checkCandidates
+  quickCheck prop_nineBlocks
+  quickCheck prop_checkUpdate
+  quickCheck prop_SolveSound
