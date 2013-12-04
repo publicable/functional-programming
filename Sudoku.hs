@@ -109,12 +109,11 @@ prop_blanks s = and [isNothing $ (rows s !! y) !! x | (y,x) <- blanks s]
   where f (n, i) | i == idx = r
                  | otherwise = n
 
-prop_findReplace :: [Int] -> (Int,Int) -> Bool
-prop_findReplace a (idx,v) = 
-  if length a > idx && idx > 0 then
-    a !!= (idx,v) !! idx == v
-  else
-    a !!= (idx,v) == a
+prop_findReplace :: [Int] -> (Int,Int) -> Property
+prop_findReplace a (idx,v) = not (null a) ==> 
+    a !!= (idx',v) !! idx' == v
+  where
+    idx' = idx `mod` (length a)
 
 update :: Sudoku -> Pos -> Maybe Int -> Sudoku
 update sud (y,x) v =
@@ -126,9 +125,11 @@ update sud (y,x) v =
 prop_checkUpdate :: Sudoku -> Pos -> Maybe Int -> Bool
 prop_checkUpdate sud (y,x) v = 
   let 
-    s = update sud (y,x) v
+    s = update sud (y',x') v
+    y' = abs $ y `mod` 9
+    x' = abs $ x `mod` 9
   in
-    (rows s !! y) !! x == v
+    (rows s !! y') !! x' == v
       
 
 candidates :: Sudoku -> Pos -> [Int]
@@ -145,13 +146,13 @@ candidates' block = [1..9] \\ catMaybes block
 
 -- if the sudoku is valid from the begining, it should be valid after inserting a candidate
 -- otherwise it just checks that it is still a sudoku
-prop_checkCandidates :: Sudoku -> Pos -> Property
-prop_checkCandidates sud (y,x) = isOkay sud && validPos 
-    ==> and $ checkAll
+prop_checkCandidates :: Sudoku -> Pos -> Bool
+prop_checkCandidates sud (y,x) = and checkAll
   where
-    validPos      = x >= 0 && x <= 8 && y >= 0 && y <= 8
-    newSud        = update sud (y,x)
-    cnds          = candidates sud (y,x)
+    y'            = y `mod` 9
+    x'            = x `mod` 9
+    newSud        = update sud (y',x')
+    cnds          = candidates sud (y',x')
     allCandidates = [newSud $ Just v | v <- cnds]
     checkAll      = map isSudoku allCandidates ++ map isOkay allCandidates
 
