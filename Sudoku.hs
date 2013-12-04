@@ -5,6 +5,8 @@ import Data.Char
 import Data.List
 import Data.Maybe
 
+import System.Process
+
 -------------------------------------------------------------------------
 
 data Sudoku = Sudoku { rows :: [[Maybe Int]] }
@@ -165,23 +167,19 @@ solve' sud cnds | null cnds = Nothing
                 | null $ blanks new_sud = Just new_sud
                 | isNothing solution = solve' sud $ tail cnds
                 | otherwise = solution
-
-                where
-                  new_sud = update sud pos (Just cnd) 
-                  pos = head $ blanks sud
-                  cnd = head cnds
-                  new_pos = head $ blanks new_sud 
-                  new_cnds = candidates new_sud new_pos
-                  solution = solve' new_sud new_cnds
+  where
+    new_sud = update sud pos (Just cnd) 
+    pos = head $ blanks sud
+    cnd = head cnds
+    new_pos = head $ blanks new_sud 
+    new_cnds = candidates new_sud new_pos
+    solution = solve' new_sud new_cnds
 
 readAndSolve :: FilePath -> IO ()
 readAndSolve path = do
   sud <- readSudoku path
   let solution = solve sud
-  if isNothing solution then
-    putStrLn "(no solution)"
-  else
-    printSudoku $ fromJust solution
+  maybe (putStrLn "(no solution)") printSudoku solution
 
 isSolutionOf :: Sudoku -> Sudoku -> Bool
 isSolutionOf sol sud | not $ isSudoku sol = False
@@ -197,11 +195,11 @@ filled sud = [(x,y) | x <- [0..8], y <- [0..8], isJust ((rows sud !! x) !! y)]
 
 prop_SolveSound :: Sudoku -> Property
 prop_SolveSound sud = isOkay sud 
-  ==> (fromJust $ solve sud) `isSolutionOf` sud
+  ==> fromJust (solve sud) `isSolutionOf` sud
 
 -- Use the property with quickCheck
 main :: IO()
-main = 
+main = do
   quickCheck prop_Sudoku
   quickCheck prop_nineBlocks
   quickCheck prop_blanks
