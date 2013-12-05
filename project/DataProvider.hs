@@ -2,13 +2,13 @@ module DataProvider where
 
 import Network.URI
 import Network.HTTP
-import Network.HTTP.Simple
 
-getJson:: String -> Json
-getJson uri = case parseURI uri of
-  Nothing -> error "Invalid URI"
-  Just uri -> do 
-    makeRequest uri
+getJson:: String -> IO String
+getJson uri = makeRequest uri
 
-makeRequest:: URI -> String
-makeRequest = undefined
+makeRequest:: String -> IO String
+makeRequest uri = do
+                  response <- simpleHTTP (getRequest uri)
+                  body <- getResponseBody response
+                  return body
+
