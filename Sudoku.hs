@@ -144,10 +144,8 @@ candidates sud (y,x) = inRow `intersect` inColumn `intersect` inThreeByThree
 candidates' :: Block -> [Int]
 candidates' block = [1..9] \\ catMaybes block
 
--- if the sudoku is valid from the begining, it should be valid after inserting a candidate
--- otherwise it just checks that it is still a sudoku
-prop_checkCandidates :: Sudoku -> Pos -> Bool
-prop_checkCandidates sud (y,x) = and checkAll
+prop_checkCandidates :: Sudoku -> Pos -> Property
+prop_checkCandidates sud (y,x) = isOkay sud ==> and checkAll
   where
     y'            = y `mod` 9
     x'            = x `mod` 9
