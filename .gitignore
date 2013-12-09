@@ -2,3 +2,5 @@
 *.swp
 *~
 Config.hs
+*.hi
+*.o
