@@ -1,14 +1,20 @@
 module DataProvider where
 
-import Network.URI
-import Network.HTTP
 
-getJson:: String -> IO String
-getJson uri = makeRequest uri
+type ID =  String
+type Name = String
+data Station = Station ID Name
 
-makeRequest:: String -> IO String
-makeRequest uri = do
-                  response <- simpleHTTP (getRequest uri)
-                  body <- getResponseBody response
-                  return body
+type Line = String
+type Direction = String
+type Time = String
+data Departure = Departure Line Direction Time
 
+searchForStation :: IO String -> Maybe Station
+searchForStation = undefined
+
+getDepartures :: Station -> Maybe [Departure]
+getDepartures = undefined
+
+instance Show Departure where
+  show = undefined

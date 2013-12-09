@@ -1,0 +1,10 @@
+module DataProvider where
+
+
+type ID =  String
+type Name = String
+data Station = Station ID Name
+
+searchForStation :: IO String -> Maybe Station
+
+
