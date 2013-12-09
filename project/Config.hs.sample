@@ -1,7 +1,7 @@
 module Config where
 
 apiKey :: String
-apiKey = "put api key here"
+apiKey = "[put api key here]"
 
 searchUrl :: String -> String
 searchUrl station = "http://api.vasttrafik.se/bin/rest.exe/v1/location.name?authKey=" ++ apiKey ++ 
