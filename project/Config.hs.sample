@@ -2,3 +2,12 @@ module Config where
 
 apiKey :: String
 apiKey = "put api key here"
+
+searchUrl :: String -> String
+searchUrl station = "http://api.vasttrafik.se/bin/rest.exe/v1/location.name?authKey=" ++ apiKey ++ 
+                    "&format=json&input=" ++ station
+
+departuresUrl :: String -> String
+departuresUrl stationID = "http://api.vasttrafik.se/bin/rest.exe/departureBoardservice?authKey=" ++
+                           apiKey ++ "&format=json&id="++ stationID ++
+                           "&maxDeparturesPerLine=2&needJourneyDetail=0&useLDTrain=0&useRegTrain=0&timeSpan=60"
