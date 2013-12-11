@@ -4,8 +4,6 @@ import RequestHandler
 import Config
 import DumbJsonParser
 import Data.Maybe
-import Prelude hiding (print, putStrLn)
-import System.IO.UTF8
 
 data Station = Station {sid::String, sname::String}
 

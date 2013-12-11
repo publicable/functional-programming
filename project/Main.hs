@@ -4,8 +4,6 @@ import DataProvider
 import System.Environment
 import System.Exit
 import Data.Maybe
-import Prelude hiding (print, putStrLn)
-import System.IO.UTF8
 
 main :: IO()
 
