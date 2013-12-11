@@ -7,7 +7,10 @@ import Data.Maybe
 
 main :: IO()
 
-main = getArgs >>= parseArg
+
+main = do 
+    args <- getArgs
+    parseArg args
 
 parseArg [] = usage >> success
 parseArg ["-h"] = usage >> success
