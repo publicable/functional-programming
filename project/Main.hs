@@ -3,16 +3,24 @@ module Main where
 import DataProvider
 import System.Environment
 import System.Exit
+import Data.Maybe
 
 main :: IO()
 
 main = getArgs >>= parseArg
 
+parseArg [] = usage >> success
 parseArg ["-h"] = usage >> success
 parseArg ["-v"] = version >> success
-parseArg ("-s":station) = putStrLn (unwords station) >> success
+parseArg ("-s":station) = display (return (unwords station)) >> success
 
 usage = putStrLn "Usage: vasttrafik -s [station name]"
 version = putStrLn "Haskell vasttrafik 0.1"
 success = exitWith ExitSuccess
 failure = exitWith (ExitFailure 1)
+
+display :: IO String -> IO ()
+display sname = do
+  s <- searchForStation sname
+  ds <- getDepartures $ fromJust s
+  sequence_ ((print $ fromJust s):(print `fmap` (fromJust `fmap` ds)))
