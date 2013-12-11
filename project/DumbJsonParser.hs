@@ -4,8 +4,6 @@ import Data.Maybe
 import Data.Char
 import Data.List.Split
 import Data.List
-import Prelude hiding (print, putStrLn)
-import System.IO.UTF8
 
 strip' :: String -> String
 strip' s = dropWhile isSpace [s' | s' <- s, conditions s']
