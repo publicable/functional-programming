@@ -36,7 +36,7 @@ searchForStation name = do
 
 getDepartures :: Station -> IO [Maybe Departure]
 getDepartures s = do
-  json <- getJson $ departuresUrl (sid s)
+  json <- getJson $ departuresUrl [("id", sid s)]
   let allDeps = getFields ["sname","time","direction"] json
   return (fmap depInit allDeps)
 
