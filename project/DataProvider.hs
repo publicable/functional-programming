@@ -46,3 +46,10 @@ instance Show Departure where
 
 instance Show Station where
   show = sname
+
+instance Eq Departure where
+  (Departure n1 d1 _) == (Departure n2 d2 _) = n1 == n2 && d1 == d2
+
+instance Ord Departure where
+     (Departure n1 d1 _) `compare` (Departure n2 d2 _) = n1 `compare` n2
+

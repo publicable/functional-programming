@@ -7,7 +7,11 @@ searchUrl :: String -> String
 searchUrl station = "http://api.vasttrafik.se/bin/rest.exe/v1/location.name?authKey=" ++ apiKey ++ 
                     "&format=json&input=" ++ station
 
-departuresUrl :: String -> String
-departuresUrl stationID = "http://api.vasttrafik.se/bin/rest.exe/departureBoardservice?authKey=" ++
-                           apiKey ++ "&format=json&id="++ stationID ++
-                           "&maxDeparturesPerLine=2&needJourneyDetail=0&useLDTrain=0&useRegTrain=0&timeSpan=60"
+departuresUrl :: [(String,String)] -> String
+departuresUrl params = baseUrl ++ encodeParams
+  where 
+    baseUrl = "http://api.vasttrafik.se/bin/rest.exe/departureBoardservice?authKey="
+       ++ apiKey
+       ++ "&format=json&maxDeparturesPerLine=1&needJourneyDetail=0"
+       ++ "&useLDTrain=0&useRegTrain=0&timeSpan=60&"
+    encodeParams = intercalate "&" [k ++ "=" ++ (urlEncode v) | (k,v) <- params]

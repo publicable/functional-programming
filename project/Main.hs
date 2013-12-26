@@ -4,6 +4,7 @@ import DataProvider
 import System.Environment
 import System.Exit
 import Data.Maybe
+import Data.List
 
 main :: IO()
 
@@ -26,4 +27,4 @@ display :: IO String -> IO ()
 display sname = do
   s <- searchForStation sname
   ds <- getDepartures $ fromJust s
-  sequence_ ((print $ fromJust s):(fmap (print . fromJust) ds))
+  sequence_ ((print $ fromJust s):(fmap (print . fromJust) (sort ds)))
