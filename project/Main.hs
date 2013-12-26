@@ -1,29 +1,50 @@
 module Main where
 
 import DataProvider
-import System.Environment
+import System.Environment (getArgs, withArgs)
+import System.Console.CmdArgs
+import Control.Monad (when)
 import System.Exit
 import Data.Maybe
 import Data.List
 
-main :: IO()
+data VSOptions = StationMode   { stationName :: String, time :: String }
+  deriving (Data, Typeable, Show, Eq)
+ 
+stationMode :: VSOptions
+stationMode = StationMode
+    { stationName = "STATION_NAME" &= help "partial or full station name", 
+      time = "HOURS:MINUTES" &= help "the time you need your schedule for (24h format)" }
+    &= details  [ "Examples:", "vasttrafik -s Brunnsparken -t 18:52" ]
+ 
+vsModes :: Mode (CmdArgs VSOptions)
+vsModes = cmdArgsMode $ modes [stationMode]
+    &= versionArg [explicit, name "version", name "v", summary _PROGRAM_INFO]
+    &= summary (_PROGRAM_INFO)
+    &= help _PROGRAM_ABOUT
+    &= helpArg [explicit, name "help", name "h"]
+    &= program _PROGRAM_NAME
+ 
+_PROGRAM_NAME = "vasttrafik"
+_PROGRAM_VERSION = "0.2"
+_PROGRAM_INFO = _PROGRAM_NAME ++ " version " ++ _PROGRAM_VERSION
+_PROGRAM_ABOUT = "a simple tool to check Vasttrafik departure boards"
 
+main :: IO ()
+main = do
+    args <- getArgs
+    opts <- (if null args then withArgs ["--help"] else id) $ cmdArgsRun vsModes
+    optionHandler opts
+ 
+optionHandler :: VSOptions -> IO ()
+optionHandler opts@StationMode{..}  = do
+    when (null stationName) $ putStrLn "warning: -s is blank"
+    exec opts
+ 
+exec :: VSOptions -> IO ()
+exec opts@StationMode{..} = display stationName
 
-main = do 
-  args <- getArgs
-  parseArg args
-
-parseArg []         = usage              >> success
-parseArg ["-h"]     = usage              >> success
-parseArg ["-v"]     = version            >> success
-parseArg ("-s":s:_) = display (return s) >> success
-
-usage   = putStrLn "Usage: vasttrafik -s [station name]"
-version = putStrLn "Haskell vasttrafik 0.2"
-success = exitWith ExitSuccess
-failure = exitWith (ExitFailure 1)
-
-display :: IO String -> IO ()
+display :: String -> IO ()
 display sname = do
   s  <- searchForStation sname
   ds <- getDepartures $ fromJust s

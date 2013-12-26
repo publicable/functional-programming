@@ -5,7 +5,7 @@ import Config
 import DumbJsonParser
 import Data.Maybe
 
-data Station = Station {sid::String, sname::String}
+data Station = Station {sid::String, sName::String}
 
 statInit :: [(String,String)] -> Maybe Station
 statInit s | isNothing i = Nothing
@@ -14,8 +14,8 @@ statInit s | isNothing i = Nothing
   where i = lookup "id" s
         n = lookup "name" s
 
-data Departure = Departure {dname::String, 
-                  direction::String, time::String}
+data Departure = Departure {dName::String, 
+                  direction::String, dTime::String}
 
 depInit :: [(String,String)] -> Maybe Departure
 depInit d | isNothing n  = Nothing
@@ -28,10 +28,9 @@ depInit d | isNothing n  = Nothing
         dr    = lookup "direction" d
         fmt t = take 2 t ++ ":" ++ drop 2 t
 
-searchForStation :: IO String -> IO (Maybe Station)
+searchForStation :: String -> IO (Maybe Station)
 searchForStation name = do
-      station <- name 
-      json <- getJson (searchUrl station)
+      json <- getJson (searchUrl name)
       return (statInit (head (getFields ["id","name"] json)))
 
 getDepartures :: Station -> IO [Maybe Departure]
@@ -41,11 +40,11 @@ getDepartures s = do
   return (fmap depInit allDeps)
 
 instance Show Departure where
-  show d = dname d ++ " | " ++ direction d 
-    ++ "\t" ++  time d
+  show d = dName d ++ " | " ++ direction d 
+    ++ "\t" ++  dTime d
 
 instance Show Station where
-  show = sname
+  show = sName
 
 instance Eq Departure where
   (Departure n1 d1 _) == (Departure n2 d2 _) = n1 == n2 && d1 == d2
