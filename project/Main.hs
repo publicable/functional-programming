@@ -39,13 +39,10 @@ main = do
 optionHandler :: VSOptions -> IO ()
 optionHandler opts@StationMode{..}  = do
     when (null stationName) $ putStrLn "warning: -s is blank"
-    exec opts
- 
-exec :: VSOptions -> IO ()
-exec opts@StationMode{..} = display stationName
+    display stationName time
 
-display :: String -> IO ()
-display sname = do
+display :: String -> String -> IO ()
+display sname dtime = do
   s  <- searchForStation sname
-  ds <- getDepartures $ fromJust s
+  ds <- getDepartures (fromJust s) dtime
   sequence_ ((print $ fromJust s):(fmap (print . fromJust) (sort ds)))
