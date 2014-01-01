@@ -8,14 +8,14 @@ import System.Exit
 import Data.Maybe
 import Data.List
 
-data VSOptions = StationMode   { stationName :: String, time :: String }
+data VSOptions = StationMode   { stationName :: String, time :: Maybe String }
   deriving (Data, Typeable, Show, Eq)
  
 stationMode :: VSOptions
 stationMode = StationMode
-    { stationName = "STATION_NAME" &= help "partial or full station name", 
-      time = "HOURS:MINUTES" &= help "the time you need your schedule for (24h format)" }
-    &= details  [ "Examples:", "vasttrafik -s Brunnsparken -t 18:52" ]
+    { stationName = ""      &= help "partial or full station name", 
+      time        = Nothing &= help "the time you need your schedule for (24h format)" }
+   &= details     [ "Examples:", "vasttrafik -s Brunnsparken -t 18:52" ]
  
 vsModes :: Mode (CmdArgs VSOptions)
 vsModes = cmdArgsMode $ modes [stationMode]
@@ -26,7 +26,7 @@ vsModes = cmdArgsMode $ modes [stationMode]
     &= program _PROGRAM_NAME
  
 _PROGRAM_NAME = "vasttrafik"
-_PROGRAM_VERSION = "0.2"
+_PROGRAM_VERSION = "0.3"
 _PROGRAM_INFO = _PROGRAM_NAME ++ " version " ++ _PROGRAM_VERSION
 _PROGRAM_ABOUT = "a simple tool to check Vasttrafik departure boards"
 
@@ -41,7 +41,7 @@ optionHandler opts@StationMode{..}  = do
     when (null stationName) $ putStrLn "warning: -s is blank"
     display stationName time
 
-display :: String -> String -> IO ()
+display :: String -> Maybe String -> IO ()
 display sname dtime = do
   s  <- searchForStation sname
   ds <- getDepartures (fromJust s) dtime
