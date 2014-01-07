@@ -27,8 +27,16 @@ getFields fs json = transpose [getField f json | f <- fs]
 
 prop_getField :: Property
 prop_getField = forAll genSafeString $ \field -> 
-				 forAll genSafeString $ \value -> 
-				 getField field ("{" ++ "\"" ++ field ++ "\"" ++ ":" ++ "\"" ++ value ++ "\"" ++ "}") == [(field, value)]
+				 forAll genSafeString $ \value1 ->
+				 forAll genSafeString $ \value2 ->
+				 forAll genSafeString $ \cruft ->
+				 getField field ("{"
+				  ++ "\"" ++ cruft ++ "\"" ++ ":" ++ "\"" ++ cruft ++ "\"" ++ ","
+				  ++ "\"" ++ field ++ "\"" ++ ":" ++ "\"" ++ value1 ++ "\"" ++ ","
+				  ++ "\"" ++ cruft ++ "\"" ++ ":" ++ "\"" ++ cruft ++ "\"" ++ ","
+				  ++ "\"" ++ field ++ "\"" ++ ":" ++ "\"" ++ value2 ++ "\"" ++ ","
+				  ++ "\"" ++ cruft ++ "\"" ++ ":" ++ "\"" ++ cruft ++ "\"" ++
+				  "}") == [(field, value1), (field, value2)]
 
 
 -- module for generating safe strings from
