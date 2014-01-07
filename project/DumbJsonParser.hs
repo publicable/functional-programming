@@ -5,6 +5,8 @@ import Data.Char
 import Data.List.Split
 import Data.List
 
+import Test.QuickCheck
+
 strip' :: String -> String
 strip' s = dropWhile isSpace [s' | s' <- s, conditions s']
   where conditions x | isAlphaNum x = True
@@ -22,3 +24,18 @@ getField f json = [(f, strip' $ removeUntil fieldName x) |
 
 getFields :: [String] -> String -> [[(String, String)]]
 getFields fs json = transpose [getField f json | f <- fs]
+
+prop_getField :: Property
+prop_getField = forAll genSafeString $ \field -> 
+				 forAll genSafeString $ \value -> 
+				 getField field ("{" ++ "\"" ++ field ++ "\"" ++ ":" ++ "\"" ++ value ++ "\"" ++ "}") == [(field, value)]
+
+
+-- module for generating safe strings from
+-- http://stackoverflow.com/questions/20934506/haskell-quickcheck-how-to-generate-only-printable-strings
+
+genSafeChar :: Gen Char
+genSafeChar = elements ['a'..'z']
+
+genSafeString :: Gen String
+genSafeString = listOf1 genSafeChar

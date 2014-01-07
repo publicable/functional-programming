@@ -1,5 +1,8 @@
 module Config where
 
+import Network.HTTP.Base
+import Data.List
+
 apiKey :: String
 apiKey = "[put api key here]"
 
